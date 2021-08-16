@@ -1,0 +1,245 @@
+body {
+    font-family: Comfortaa,sans-serif !important;
+}
+
+.top {
+    background: linear-gradient(90deg,#f64f59,#c471ed,#12c2e9);
+}
+.for_logo img{
+    max-width: 100%;   
+}
+.desktop-menu li a {
+    color: #fff !important;
+    font-weight: 700;
+    font-family: Comfortaa,sans-serif;
+}
+
+.head_line h3 {
+    font-size: 50px;
+    font-family: 'Dancing Script', cursive;
+    /* line-height: .7; */
+    color: #fff;
+}
+.head_line p {
+    color: #fff;
+}
+.search-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 50px;
+    
+}
+.search-field input {
+    border:none;
+    border-radius: 50px;
+    /* width: 80%; */
+    text-align: center;
+    width: 250px;
+    height: auto;
+    margin-bottom: 0;
+}
+.search-field button {
+    border: none;
+    border-radius: 50px;
+    padding: 10px 30px;
+    color: #fff;
+    background: #000;
+}
+.for_row .row {
+    max-width: 770px;
+    margin: 15px auto;
+}
+.nickname h1{
+font-size: 24px;
+}
+.nickname span {
+    font-size: 14px;
+}
+
+.for_score {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.profile_info div {
+    display: inline-block;
+    text-align: left;
+    font-size: 24px;
+    margin: 0 8px;
+    font-weight: 600;
+    color: #212121;
+}
+.profile_info span {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: default;
+    color: #212121;
+}
+
+
+.user_profile {
+    position: relative;
+    padding: 0 20px;
+    overflow: hidden;
+}
+a {
+    text-decoration: none;
+}
+.avatar img {
+    max-width: 100%;
+    border-radius: 100%;
+    display: block;
+    border: 5px solid #fff;
+    width: 160px;
+    height: 160px;
+}
+.user_profile .avatar {
+    float: left;
+    margin-right: 30px;
+    border-radius: 100%;
+    position: relative;
+    width: 170px;
+    padding: 5px;
+    background: radial-gradient(124.65% 124.65% at 37.17% 100.07%,#FFDD55 0%,#FF543F 32.8%,#FC5245 34.8%,#E64771 50.4%,#D53E91 64.3%,#CC39A4 76.1%,#C837AB 84.1%)
+}
+.user-info a {
+    text-decoration: none !important
+}
+.tab-title {
+    text-align: center;
+    border-bottom: 2px solid;
+    color: #bbb;
+    cursor: pointer;
+}
+.story-title, .tab-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 50px;
+}
+.slick-next, .slick-prev {
+    background: #000 !important;
+}
+.feature-name {
+    font-weight: 500;
+    font-size: 20px;
+}
+.view_text {
+    font-size: 17px;
+}
+.visit_blog_link {
+    background: #212529;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+}
+.visit_btn a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer_edit {
+    background: #3C4E63;
+    font-family: Comfortaa,sans-serif;
+}
+.footer_edit p {
+    color: #fff;
+}
+.list-inline {
+    padding-left: 0;
+    list-style: none;
+}
+.list-inline a {
+    color: #fff;
+}
+.list-inline a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.list-inline-item {
+    display: inline-block;
+}
+.for_h2 h2{
+    letter-spacing: 2px;
+}
+.inner-img img {
+    max-width: 100%;
+    margin: auto;
+}
+.for_atag a {
+    text-decoration: none !important
+}
+.for_p {
+    font-weight: 700;
+    color: initial;
+    font-size: 18px;
+}
+.short-desc p {
+    font-size: .9rem;
+    color: #000;
+}
+/* for zoom in card */
+.img-wrapper {  
+    width: 400px;
+    height: 400px;
+    overflow: hidden; 
+  }
+  
+  .inner-img {
+    transition: 0.3s;
+  }
+  
+  .inner-img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Other styling elements, that are not necessary for the example */
+  
+  .img-wrapper {
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px solid #000;
+  }
+
+/* Remove Content Page */
+.white_bg {
+    background: #fff;
+}
+.form-wrapper {
+    max-width: 500px;
+    background: rgba(0,0,0,.05);
+}
+.remove-content-form .header {
+    padding: 15px;
+    background: #faebd7;
+    font-weight: 700;
+    font-size: 18px;
+}
+.form_body {
+    padding: 30px;
+}
+.first_details p {
+    font-size: 17px;
+}
+.first_details h4 {
+    font-size: 30px;
+}
+
+@media screen and (min-width: 768px) {
+    .search-field {
+        border-radius: 50px;
+        border: none;
+        padding: 10px 20px;
+        display: inline-block;
+        background: #fff;
+    }
+    
+}
+@media (max-width: 575.98px) {
+    .slick-next {
+        right: -5px !important
+    }
+    .slick-prev {
+        left: -5px !important
+    }
+}
