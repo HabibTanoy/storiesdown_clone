@@ -46,24 +46,61 @@ body {
     color: #fff;
     background: #000;
 }
-.for_row .row {
-    max-width: 770px;
+.user_info .row {
+    max-width: 693px;
     margin: 15px auto;
 }
-.nickname h1{
-font-size: 24px;
+img {
+    max-width: 100%;
+}
+.user_info .user_header {
+    position: relative;
+    padding: 0 20px;
+    overflow: hidden;
+}
+.user_info .avatar {
+    float: left;
+    margin-right: 30px;
+    border-radius: 100%;
+    position: relative;
+    width: 170px;
+    padding: 5px;
+    background: radial-gradient(124.65% 124.65% at 37.17% 100.07%,#FFDD55 0%,#FF543F 32.8%,#FC5245 34.8%,#E64771 50.4%,#D53E91 64.3%,#CC39A4 76.1%,#C837AB 84.1%);
+}
+a {
+    text-decoration: none;
+}
+.avatar img {
+    border-radius: 100%;
+    display: block;
+    border: 5px solid #fff;
+    width: 160px;
+    height: 160px;
+    max-width: 100%;
+}
+.flex.aic {
+    align-items: center;
+}
+.flex.jcsb  {
+    justify-content: space-between;
+}
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.nickname h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
 }
 .nickname span {
     font-size: 14px;
 }
 
 .for_score {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
+    margin-top: -60px !important
 }
 .profile_info div {
-    display: inline-block;
+    display: inline-flex;
     text-align: left;
     font-size: 24px;
     margin: 0 8px;
@@ -76,36 +113,7 @@ font-size: 24px;
     font-weight: 400;
     cursor: default;
     color: #212121;
-}
-
-
-.user_profile {
-    position: relative;
-    padding: 0 20px;
-    overflow: hidden;
-}
-a {
-    text-decoration: none;
-}
-.avatar img {
-    max-width: 100%;
-    border-radius: 100%;
-    display: block;
-    border: 5px solid #fff;
-    width: 160px;
-    height: 160px;
-}
-.user_profile .avatar {
-    float: left;
-    margin-right: 30px;
-    border-radius: 100%;
-    position: relative;
-    width: 170px;
-    padding: 5px;
-    background: radial-gradient(124.65% 124.65% at 37.17% 100.07%,#FFDD55 0%,#FF543F 32.8%,#FC5245 34.8%,#E64771 50.4%,#D53E91 64.3%,#CC39A4 76.1%,#C837AB 84.1%)
-}
-.user-info a {
-    text-decoration: none !important
+    margin-left: 3px;
 }
 .tab-title {
     text-align: center;
@@ -237,9 +245,28 @@ a {
 }
 @media (max-width: 575.98px) {
     .slick-next {
-        right: -5px !important
+        right: -2px !important
     }
     .slick-prev {
-        left: -5px !important
+        left: -2px !important
+    }
+    .head_line h3 {
+        font-size: 31px;
+    }
+    .head_line .mt-5 {
+        margin-top: 0px !important
     }
 }
+@media (max-width: 767.98px) {
+    .search-field input {
+        height: 50px;
+        margin-bottom: 10px;
+    }
+}
+
+
+
+
+
+
+

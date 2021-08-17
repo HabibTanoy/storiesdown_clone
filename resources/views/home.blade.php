@@ -1,58 +1,55 @@
 @extends('master')
 @section('title','Home')
 @section('content')
-<div class="container">
-              <div class="row">
+      <div class="container">
+          <div class="row">
                 <div class="col-12 text-center">
-                  <div class="text-center head_line">
-                    <h3 class="font-weight-bold mb-3">Instagram Story Viewer & Downloader</h3>
-                    <p class="pb-5">Best Instagram story viewer! You can watch Instagram stories anonymously and quickly without the need to log in or having account.</p>
+                      <div class="text-center head_line">
+                        <h3 class="font-weight-bold mb-3 mt-5">Instagram Story Viewer & Downloader</h3>
+                        <p class="pb-5">Best Instagram story viewer! You can watch Instagram stories anonymously and quickly without the need to log in or having account.</p>
+                      </div>
+                    <div class="search-field mb-5 text-center">
+                      <input type="text" placeholder="Enter instagram username" value autocomplete="off">
+                      <button>Search</button>
+                    </div>
                 </div>
-                <div class="search-field mb-5 text-center">
-                  <input type="text" placeholder="Enter instagram username" value autocomplete="off">
-                  <button>Search</button>
-                </div>
-              </div>
-            </div>
-            </div>
+          </div>
+        </div>
             <!--end of search bar-->
-            <div class="container pb-5 for_row">
-              <div class="row user_profile">
-                <div class="avatar">
+            <div class="user_info">
+              <div class="container pb-5">
+                <div class="row user_header">
+                  <div class="avatar">
                     <a href="">
-                        <img src="{{asset('/image/demo.jpeg')}}" alt="">
+                      <img src="{{asset('/image/demo.jpeg')}}" alt="">
                     </a>
-                </div>
-                <!-- <div class="row"> -->
-                    <div class="mt-5 flex border">
-                        <div class="nickname mb-5">
-                            <h1>habib_tonoy
-                                <span>(Anonymous profile view)</span>
-                            </h1>
+                  </div>
+                  <div class="flex jcsb aic">
+                    <div class="nickname">
+                      <h1>habib_tonoy
+                        <span>(Anonymous profile view)</span>
+                      </h1>
+                    </div>
+                  </div>
+                  <div class="row for_score">
+                    <div class="profile_info">
+                        <div>
+                            <span>500</span>
+                            <span>posts</span>
+                        </div>
+                        <div>
+                            <span>45</span>
+                            <span>Followers</span>
+                        </div>
+                        <div>
+                            <span>6</span>
+                            <span>Following</span>
                         </div>
                     </div>
-                <!-- </div> -->
-                
-            </div>
-            <div class="for_score border">
-                            <div class="flex profile_info">
-                                <div>
-                                    <span>49</span>
-                                    <span>posts</span>
-                                </div>
-                                <div>
-                                    <span>45</span>
-                                    <span>Followers</span>
-                                </div>
-                                <div>
-                                    <span>6</span>
-                                    <span>Following</span>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                </div>  
               </div>
-
-        </div>
+            </div>
     </section>
     <section>
       <div class="container py-5">
@@ -62,6 +59,40 @@
           </div>
           <div class="col-6 pr-0">
             <div class="tab-title posts mb-3 ">Posts</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--image card start-->
+    <section>
+      <div class="container gallery">
+        <div class="row">
+          <div class="col-md-3 mb-4">
+            <a href="{{asset('/image/img1.php')}}"><img src="{{asset('/image/img1.php')}}"></a>
+          </div>
+          <div class="col-md-3 mb-4">
+            <a href="{{asset('/image/img2.php')}}"><img src="{{asset('/image/img2.php')}}"></a>
+          </div>
+          <div class="col-md-3 mb-4">
+            <a href="{{asset('/image/img3.php')}}"><img src="{{asset('/image/img3.php')}}"></a>
+          </div>
+          <div class="col-md-3 mb-4">
+            <a href="{{asset('/image/img4.php')}}"><img src="{{asset('/image/img4.php')}}"></a>
+          </div>
+        </div>
+        <!--1st row end-->
+        <div class="row">
+        <div class="col-md-3 mb-4">
+            <a href="{{asset('/image/img1.php')}}"><img src="{{asset('/image/img1.php')}}"></a>
+          </div>
+          <div class="col-md-3 mb-4">
+            <a href="{{asset('/image/img2.php')}}"><img src="{{asset('/image/img2.php')}}"></a>
+          </div>
+          <div class="col-md-3 mb-4">
+            <a href="{{asset('/image/img3.php')}}"><img src="{{asset('/image/img3.php')}}"></a>
+          </div>
+          <div class="col-md-3 mb-4">
+            <a href="{{asset('/image/img4.php')}}"><img src="{{asset('/image/img4.php')}}"></a>
           </div>
         </div>
       </div>
@@ -158,7 +189,7 @@
         </div>
       </div>
     </div>
-    <div class="mt-3 mb-5 text-center visit_btn">
+    <div class="my-5 text-center visit_btn">
       <a href="blog.html" class="text-uppercase visit_blog_link">visit your blog</a>
     </div>
 @endsection
