@@ -1,6 +1,49 @@
 @extends('master')
 @section('title','Home')
 @section('content')
+    <style>
+        [data-tab-content] {
+            display: none;
+        }
+
+        .active[data-tab-content] {
+            display: block;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            /*border-bottom: 2px solid #bbb;*/
+        }
+
+        .tab {
+            cursor: pointer;
+            /*padding: 10px;*/
+        }
+
+        .tab.active {
+            border-bottom: 2px solid black;
+            color: black;
+        }
+
+
+        /*.tab:hover {*/
+        /*    background-color: #AAA;*/
+        /*}*/
+
+        .tab-content {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    </style>
       <div class="container">
           <div class="row">
                 <div class="col-12 text-center">
@@ -47,53 +90,63 @@
                         </div>
                     </div>
                 </div>
-                </div>  
+                </div>
               </div>
             </div>
     </section>
     <section>
       <div class="container py-5">
         <div class="row">
-          <div class="col-6 pr-0">
-            <div class="tab-title stories mb-3">Stories</div>
-          </div>
-          <div class="col-6 pr-0">
-            <div class="tab-title posts mb-3 ">Posts</div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--image card start-->
-    <section>
-      <div class="container gallery">
-        <div class="row">
-          <div class="col-md-3 mb-4">
-            <a href="{{asset('/image/img1.php')}}"><img src="{{asset('/image/img1.php')}}"></a>
-          </div>
-          <div class="col-md-3 mb-4">
-            <a href="{{asset('/image/img2.php')}}"><img src="{{asset('/image/img2.php')}}"></a>
-          </div>
-          <div class="col-md-3 mb-4">
-            <a href="{{asset('/image/img3.php')}}"><img src="{{asset('/image/img3.php')}}"></a>
-          </div>
-          <div class="col-md-3 mb-4">
-            <a href="{{asset('/image/img4.php')}}"><img src="{{asset('/image/img4.php')}}"></a>
-          </div>
-        </div>
-        <!--1st row end-->
-        <div class="row">
-        <div class="col-md-3 mb-4">
-            <a href="{{asset('/image/img1.php')}}"><img src="{{asset('/image/img1.php')}}"></a>
-          </div>
-          <div class="col-md-3 mb-4">
-            <a href="{{asset('/image/img2.php')}}"><img src="{{asset('/image/img2.php')}}"></a>
-          </div>
-          <div class="col-md-3 mb-4">
-            <a href="{{asset('/image/img3.php')}}"><img src="{{asset('/image/img3.php')}}"></a>
-          </div>
-          <div class="col-md-3 mb-4">
-            <a href="{{asset('/image/img4.php')}}"><img src="{{asset('/image/img4.php')}}"></a>
-          </div>
+            <div class="col-md-12">
+                <ul class="tabs">
+                    <li data-tab-target="#stories" class="tab tab-title stories w-50 active">Stories</li>
+                    <li data-tab-target="#photos" class="tab tab-title posts w-50">Photos</li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="stories" data-tab-content class="active">
+                        <section class="mt-5 text-center">
+                            No stories in 24 hours
+                        </section>
+                    </div>
+                    <div id="photos" data-tab-content>
+                        <!--image card start-->
+                        <section class="mt-5 text-center">
+                            <div class="container gallery">
+                                <div class="row">
+                                    <div class="col-md-3 mb-4">
+                                        <a href="{{asset('/image/img1.php')}}"><img src="{{asset('/image/img1.php')}}"></a>
+                                    </div>
+                                    <div class="col-md-3 mb-4">
+                                        <a href="{{asset('/image/img2.php')}}"><img src="{{asset('/image/img2.php')}}"></a>
+                                    </div>
+                                    <div class="col-md-3 mb-4">
+                                        <a href="{{asset('/image/img3.php')}}"><img src="{{asset('/image/img3.php')}}"></a>
+                                    </div>
+                                    <div class="col-md-3 mb-4">
+                                        <a href="{{asset('/image/img4.php')}}"><img src="{{asset('/image/img4.php')}}"></a>
+                                    </div>
+                                </div>
+                                <!--1st row end-->
+                                <div class="row">
+                                    <div class="col-md-3 mb-4">
+                                        <a href="{{asset('/image/img1.php')}}"><img src="{{asset('/image/img1.php')}}"></a>
+                                    </div>
+                                    <div class="col-md-3 mb-4">
+                                        <a href="{{asset('/image/img2.php')}}"><img src="{{asset('/image/img2.php')}}"></a>
+                                    </div>
+                                    <div class="col-md-3 mb-4">
+                                        <a href="{{asset('/image/img3.php')}}"><img src="{{asset('/image/img3.php')}}"></a>
+                                    </div>
+                                    <div class="col-md-3 mb-4">
+                                        <a href="{{asset('/image/img4.php')}}"><img src="{{asset('/image/img4.php')}}"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
         </div>
       </div>
     </section>
@@ -192,4 +245,22 @@
     <div class="my-5 text-center visit_btn">
       <a href="blog.html" class="text-uppercase visit_blog_link">visit your blog</a>
     </div>
+    <script>
+        const tabs = document.querySelectorAll('[data-tab-target]')
+        const tabContents = document.querySelectorAll('[data-tab-content]')
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = document.querySelector(tab.dataset.tabTarget)
+                tabContents.forEach(tabContent => {
+                    tabContent.classList.remove('active')
+                })
+                tabs.forEach(tab => {
+                    tab.classList.remove('active')
+                })
+                tab.classList.add('active')
+                target.classList.add('active')
+            })
+        })
+    </script>
 @endsection
