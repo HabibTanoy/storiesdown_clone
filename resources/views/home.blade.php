@@ -46,30 +46,33 @@
     </style>
       <div class="container">
           <div class="row">
-                <div class="col-12 text-center">
+                <div class="col-12 text-center" style="{{!isset($profile) ? 'height:80vh': ''}}">
                       <div class="text-center head_line">
                         <h3 class="font-weight-bold mb-3 mt-5">Instagram Story Viewer & Downloader</h3>
                         <p class="pb-5">Best Instagram story viewer! You can watch Instagram stories anonymously and quickly without the need to log in or having account.</p>
                       </div>
-                    <div class="search-field mb-5 text-center">
-                      <input type="text" placeholder="Enter instagram username" value autocomplete="off">
-                      <button>Search</button>
+                    <div class="search-field text-center">
+                        <form id="search" method="POST">
+                            <input type="text" name="user_name" placeholder="Enter instagram username" value autocomplete="off">
+                            <button type="submit">Search</button>
+                        </form>
                     </div>
                 </div>
           </div>
         </div>
             <!--end of search bar-->
-            <div class="user_info">
+            @if(isset($profile))
+                <div class="user_info">
               <div class="container pb-5">
                 <div class="row user_header">
                   <div class="avatar">
                     <a href="">
-                      <img src="{{asset('/image/demo.jpeg')}}" alt="">
+                      <img src="{{$profile['profile_picture']}}" alt="">
                     </a>
                   </div>
                   <div class="flex jcsb aic">
                     <div class="nickname">
-                      <h1>habib_tonoy
+                      <h1>{{$profile['full_name']}}
                         <span>(Anonymous profile view)</span>
                       </h1>
                     </div>
@@ -77,15 +80,15 @@
                   <div class="row for_score">
                     <div class="profile_info">
                         <div>
-                            <span>500</span>
+                            <span>{{$profile['number_of_published_post']}}</span>
                             <span>posts</span>
                         </div>
                         <div>
-                            <span>45</span>
+                            <span>{{$profile['number_of_followers']}}</span>
                             <span>Followers</span>
                         </div>
                         <div>
-                            <span>6</span>
+                            <span>{{$profile['number_of_follows']}}</span>
                             <span>Following</span>
                         </div>
                     </div>
@@ -93,64 +96,67 @@
                 </div>
               </div>
             </div>
+            @endif
     </section>
-    <section>
-      <div class="container py-5">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="tabs">
-                    <li data-tab-target="#stories" class="tab tab-title stories w-50 active">Stories</li>
-                    <li data-tab-target="#photos" class="tab tab-title posts w-50">Photos</li>
-                </ul>
+    @if(isset($profile))
+        <section>
+          <div class="container py-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="tabs">
+                        <li data-tab-target="#stories" class="tab tab-title stories w-50 active">Stories</li>
+                        <li data-tab-target="#photos" class="tab tab-title posts w-50">Photos</li>
+                    </ul>
 
-                <div class="tab-content">
-                    <div id="stories" data-tab-content class="active">
-                        <section class="mt-5 text-center">
-                            No stories in 24 hours
-                        </section>
-                    </div>
-                    <div id="photos" data-tab-content>
-                        <!--image card start-->
-                        <section class="mt-5 text-center">
-                            <div class="container gallery">
-                                <div class="row">
-                                    <div class="col-md-3 mb-4">
-                                        <a href="{{asset('/image/img1.php')}}"><img src="{{asset('/image/img1.php')}}"></a>
+                    <div class="tab-content">
+                        <div id="stories" data-tab-content class="active">
+                            <section class="mt-5 text-center">
+                                No stories in 24 hours
+                            </section>
+                        </div>
+                        <div id="photos" data-tab-content>
+                            <!--image card start-->
+                            <section class="mt-5 text-center">
+                                <div class="container gallery">
+                                    <div class="row">
+                                        <div class="col-md-3 mb-4">
+                                            <a href="{{asset('/image/img1.php')}}"><img src="{{asset('/image/img1.php')}}"></a>
+                                        </div>
+                                        <div class="col-md-3 mb-4">
+                                            <a href="{{asset('/image/img2.php')}}"><img src="{{asset('/image/img2.php')}}"></a>
+                                        </div>
+                                        <div class="col-md-3 mb-4">
+                                            <a href="{{asset('/image/img3.php')}}"><img src="{{asset('/image/img3.php')}}"></a>
+                                        </div>
+                                        <div class="col-md-3 mb-4">
+                                            <a href="{{asset('/image/img4.php')}}"><img src="{{asset('/image/img4.php')}}"></a>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3 mb-4">
-                                        <a href="{{asset('/image/img2.php')}}"><img src="{{asset('/image/img2.php')}}"></a>
-                                    </div>
-                                    <div class="col-md-3 mb-4">
-                                        <a href="{{asset('/image/img3.php')}}"><img src="{{asset('/image/img3.php')}}"></a>
-                                    </div>
-                                    <div class="col-md-3 mb-4">
-                                        <a href="{{asset('/image/img4.php')}}"><img src="{{asset('/image/img4.php')}}"></a>
+                                    <!--1st row end-->
+                                    <div class="row">
+                                        <div class="col-md-3 mb-4">
+                                            <a href="{{asset('/image/img1.php')}}"><img src="{{asset('/image/img1.php')}}"></a>
+                                        </div>
+                                        <div class="col-md-3 mb-4">
+                                            <a href="{{asset('/image/img2.php')}}"><img src="{{asset('/image/img2.php')}}"></a>
+                                        </div>
+                                        <div class="col-md-3 mb-4">
+                                            <a href="{{asset('/image/img3.php')}}"><img src="{{asset('/image/img3.php')}}"></a>
+                                        </div>
+                                        <div class="col-md-3 mb-4">
+                                            <a href="{{asset('/image/img4.php')}}"><img src="{{asset('/image/img4.php')}}"></a>
+                                        </div>
                                     </div>
                                 </div>
-                                <!--1st row end-->
-                                <div class="row">
-                                    <div class="col-md-3 mb-4">
-                                        <a href="{{asset('/image/img1.php')}}"><img src="{{asset('/image/img1.php')}}"></a>
-                                    </div>
-                                    <div class="col-md-3 mb-4">
-                                        <a href="{{asset('/image/img2.php')}}"><img src="{{asset('/image/img2.php')}}"></a>
-                                    </div>
-                                    <div class="col-md-3 mb-4">
-                                        <a href="{{asset('/image/img3.php')}}"><img src="{{asset('/image/img3.php')}}"></a>
-                                    </div>
-                                    <div class="col-md-3 mb-4">
-                                        <a href="{{asset('/image/img4.php')}}"><img src="{{asset('/image/img4.php')}}"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
+                            </section>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-      </div>
-    </section>
-    <section>
+          </div>
+        </section>
+        <section>
+    @endif
       <div class="container">
         <div class="row py-5 text-center">
           <div class="col-12 col-md-4 mb-4">
@@ -263,4 +269,16 @@
             })
         })
     </script>
+
+        <script>
+            $('#search').on('submit',(event)=>{
+                event.preventDefault();
+               var user_name = $("input[name=user_name]").val();
+               if (user_name) {
+                   window.location.href = "user/"+user_name
+               }else{
+                   alert('Give a valid username')
+               }
+            });
+        </script>
 @endsection
