@@ -112,8 +112,8 @@
                     <div class="tab-content">
                         <div id="stories" data-tab-content class="active">
                             <section class="mt-5 text-center">
-                                <div class="row" id="stories-container">
-                                    No stories in 24 hours
+                                <div class="row w-100 text-center" id="stories-container">
+
                                 </div>
                             </section>
                         </div>
@@ -269,8 +269,12 @@
                 method: 'GET',
                 dataType: 'json',
                 success: function(response){
-                    console.log(response.stories)
-                    $('#stories-container').html(response.stories)
+                    if (!response.stories)
+                    {
+                        $('#stories-container').html('No stories in 24 hours');
+                    }else{
+                        $('#stories-container').html(response.stories)
+                    }
                 }
             });
         @endif
