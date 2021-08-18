@@ -173,8 +173,10 @@ class FetchInstagramProfileControllerController extends Controller
         foreach ($response->story->data as $story)
         {
             $story_response .= '<div class="col-md-3 mb-4">'.
-                '<a href="'.$story->video_versions[0]->url.'"><img src="'.$story->video_versions[0]->url.'"></a>'.
-                '</div>';
+                                    '<video width="320" height="240" controls>'.
+                                        '<source src="'.$story->video_versions[0]->url.'" type="video/mp4">'.
+                                    '</video>'.
+                                '</div>';
         }
 
         return response()->json(['stories' => $story_response]);
