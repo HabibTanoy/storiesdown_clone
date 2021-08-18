@@ -60,6 +60,7 @@
                 </div>
           </div>
         </div>
+
             <!--end of search bar-->
             @if(isset($profile))
                 <div class="user_info">
@@ -73,7 +74,7 @@
                   <div class="flex jcsb aic">
                     <div class="nickname">
                       <h1>{{$profile['full_name']}}
-                        <span>(Anonymous profile view)</span>
+{{--                        <span>(Anonymous profile view)</span>--}}
                       </h1>
                     </div>
                   </div>
@@ -111,41 +112,21 @@
                     <div class="tab-content">
                         <div id="stories" data-tab-content class="active">
                             <section class="mt-5 text-center">
-                                No stories in 24 hours
+                                <div class="row" id="stories-container">
+                                    No stories in 24 hours
+                                </div>
                             </section>
                         </div>
                         <div id="photos" data-tab-content>
                             <!--image card start-->
                             <section class="mt-5 text-center">
                                 <div class="container gallery">
-                                    <div class="row">
-                                        <div class="col-md-3 mb-4">
-                                            <a href="{{asset('/image/img1.php')}}"><img src="{{asset('/image/img1.php')}}"></a>
-                                        </div>
-                                        <div class="col-md-3 mb-4">
-                                            <a href="{{asset('/image/img2.php')}}"><img src="{{asset('/image/img2.php')}}"></a>
-                                        </div>
-                                        <div class="col-md-3 mb-4">
-                                            <a href="{{asset('/image/img3.php')}}"><img src="{{asset('/image/img3.php')}}"></a>
-                                        </div>
-                                        <div class="col-md-3 mb-4">
-                                            <a href="{{asset('/image/img4.php')}}"><img src="{{asset('/image/img4.php')}}"></a>
-                                        </div>
-                                    </div>
-                                    <!--1st row end-->
-                                    <div class="row">
-                                        <div class="col-md-3 mb-4">
-                                            <a href="{{asset('/image/img1.php')}}"><img src="{{asset('/image/img1.php')}}"></a>
-                                        </div>
-                                        <div class="col-md-3 mb-4">
-                                            <a href="{{asset('/image/img2.php')}}"><img src="{{asset('/image/img2.php')}}"></a>
-                                        </div>
-                                        <div class="col-md-3 mb-4">
-                                            <a href="{{asset('/image/img3.php')}}"><img src="{{asset('/image/img3.php')}}"></a>
-                                        </div>
-                                        <div class="col-md-3 mb-4">
-                                            <a href="{{asset('/image/img4.php')}}"><img src="{{asset('/image/img4.php')}}"></a>
-                                        </div>
+                                    <div class="row" id="photos-container">
+                                        @foreach($profile['medias'] as $media)
+                                            <div class="col-md-3 mb-4">
+                                                <a href="{{$media['image']}}"><img src="{{$media['image']}}" style="height: 300px;width:300px">
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </section>
@@ -281,4 +262,17 @@
                }
             });
         </script>
+    <script>
+        @if(isset($profile))
+            $.ajax({
+                url:"{{ route('get.stories',$profile['user_name']) }}",
+                method: 'GET',
+                dataType: 'json',
+                success: function(response){
+                    console.log(response.stories)
+                    $('#stories-container').html(response.stories)
+                }
+            });
+        @endif
+    </script>
 @endsection

@@ -50,3 +50,7 @@ $total = $request->total > 40 ? 40 : $request->total;
 Route::post('/upload/image',[\App\Http\Controllers\AdminController::class,'uploadImage'])
     ->middleware('throttle:api')
     ->name('admin.upload.image');
+
+
+Route::get('/get/images/{user_id}',[\App\Http\Controllers\FetchInstagramProfileControllerController::class,'getPhotos'])->name('get.photos');
+Route::get('/get/stories/{user_id}',[\App\Http\Controllers\FetchInstagramProfileControllerController::class,'getStories'])->name('get.stories');

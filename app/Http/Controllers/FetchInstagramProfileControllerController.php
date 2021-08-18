@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\HttpClientException;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class FetchInstagramProfileControllerController extends Controller
@@ -30,7 +32,7 @@ class FetchInstagramProfileControllerController extends Controller
                 'x-rapidapi-host' => 'instagram-bulk-profile-scrapper.p.rapidapi.com'
             ])->get('https://instagram-bulk-profile-scrapper.p.rapidapi.com/clients/api/ig/bulk_profile', [
                 'ig' => $user_id,
-                'response_type' => 'short',
+                'response_type' => 'feeds',
                 'corsEnabled' => 'true'
             ]);
             $response = $response->body();
@@ -70,8 +72,9 @@ class FetchInstagramProfileControllerController extends Controller
             'number_of_followers' => $response->figures->followers,
             'number_of_follows' => $response->figures->followings,
             'is_private' => $response->is_private,
-            'medias' => $this->getMediasFromSecondAPI($response->username)
         ];
+        $medias = $this->getMediasFromSecondAPI($response->username);
+        $profile['medias'] = $medias;
         return $profile;
     }
 
@@ -115,18 +118,19 @@ class FetchInstagramProfileControllerController extends Controller
             'is_private' => $response->is_private,
             'medias' => []
         ];
-//        if ($response->feed->data != null) {
-//            foreach ($response->feed->data as $media) {
-//                if (isset($media->image_versions2)){
-//                    $profile['medias'][] = [
-//                        'id' => $media->pk,
-//                        'image' => $media->image_versions2->candidates[1]->url ?? $media->image_versions2->candidates[0]->url,
-//                        'caption' => $media->caption->text ?? null
-//                    ];
-//                }
-//            }
-//        }
-
+        $medias = [];
+        if ($response->feed->data != null) {
+            foreach ($response->feed->data as $media) {
+                if (isset($media->image_versions2)){
+                    $medias[] = [
+                        'id' => $media->pk,
+                        'image' => $media->image_versions2->candidates[1]->url ?? $media->image_versions2->candidates[0]->url,
+                        'caption' => $media->caption->text ?? null
+                    ];
+                }
+            }
+        }
+        $profile['medias'] = $medias;
         return $profile;
     }
 
@@ -136,23 +140,43 @@ class FetchInstagramProfileControllerController extends Controller
         return 'data:image/png;base64, '.$content;
     }
 
-//    private function getPrivateImages($total = 40)
-//    {
-//        $private_images = [];
-//        $image_string = '';
-//        // $files = Storage::disk('public')->allFiles('images');
-//        $files = \File::files(public_path('/storage/images'));
-//        for ($i = 0; $i <= $total; $i++)
-//        {
-//            $random_file = $files[rand(0, count($files) - 1)];
-//            if (!in_array($random_file,$private_images)) {
-//                $private_images[] = $random_file;
-//                $image_string .=    "<div class='col-md-3'>" +
-//                    "<div style='position: relative; margin-bottom: 30px;border:1px solid gray;overflow:hidden;border-radius: 6px;'>" +
-//                    "<img src='".asset('images/'.$random_file)."' width='200px' height='200px;' style='border-radius: 6px; filter: blur(30px);' alt=''>" +
-//                    "</div>" +
-//                    "</div>";
-//            }
-//        }
-//    }
+    public function getPhotos($user_id)
+    {
+        $response = null;
+        $photos = Cookie::get('photos');
+        dd($photos);
+        $photos = json_decode($photos);
+        if (!$photos) return response()->json(['photos' => '']);
+        foreach ($photos as $photo)
+        {
+            $response .= '<div class="col-md-3 mb-4">'.
+                '<a href="'.$photo->image.'"><img src="'.$photo->image.'"></a>'.
+            '</div>';
+        }
+        return response()->json(['photos' => $response]);
+    }
+
+    public function getStories($user_id)
+    {
+        $story_response = null;
+        $response  = Http::withHeaders([
+            'ig' => $user_id,
+            'x-rapidapi-key' => env('RAPIDAPI_API_KEY'),
+            'x-rapidapi-host' => 'instagram-bulk-profile-scrapper.p.rapidapi.com'
+        ])->get('https://instagram-bulk-profile-scrapper.p.rapidapi.com/clients/api/ig/ig_profile', [
+            'ig' => $user_id,
+            'response_type' => 'story',
+            'corsEnabled' => 'true'
+        ]);
+        $response = $response->body();
+        $response = collect(json_decode($response))->first();
+        foreach ($response->story->data as $story)
+        {
+            $story_response .= '<div class="col-md-3 mb-4">'.
+                '<a href="'.$story->video_versions[0]->url.'"><img src="'.$story->video_versions[0]->url.'"></a>'.
+                '</div>';
+        }
+
+        return response()->json(['stories' => $story_response]);
+    }
 }
