@@ -256,7 +256,11 @@
                 event.preventDefault();
                var user_name = $("input[name=user_name]").val();
                if (user_name) {
-                   window.location.href = "user/"+user_name
+                   @if(isset($profile))
+                   window.location.href = user_name
+                   @else
+                   window.location.href = "/user/"+user_name
+                   @endif
                }else{
                    alert('Give a valid username')
                }
@@ -265,7 +269,7 @@
     <script>
         @if(isset($profile))
             $.ajax({
-                url:"{{ route('get.stories',$profile['user_name']) }}",
+                url:'{{route('get.stories',$profile['user_name'])}}',
                 method: 'GET',
                 dataType: 'json',
                 success: function(response){
