@@ -11,7 +11,7 @@
             </ul>
         </div>
         <div class="sb2-2-1" >
-            <form action="{{route('admin.update.blog.post',$post->id)}}" method="POST">
+            <form action="{{route('admin.update.blog.post',$post->slug)}}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="row">

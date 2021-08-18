@@ -39,7 +39,7 @@
                             <td>
                                 <div style="width: 100%;display:flex;justify-content: center">
                                     <div style="float: left;margin: 5px" class="border">
-                                        <form action="{{route('admin.edit.blog.post',$post->id)}}" method="GET">
+                                        <form action="{{route('admin.edit.blog.post',$post->slug)}}" method="GET">
                                             <button class="btn-primary" type="submit">
                                                 <i class="fa fa-edit"></i>
                                             </button>

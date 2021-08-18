@@ -14,7 +14,7 @@
               <a class="nav-link" href="#">homepage</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="blog.html">blog</a>
+              <a class="nav-link" href="{{route('show.blog')}}">blog</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="content.html">remove content</a>
