@@ -46,8 +46,15 @@ body {
     color: #fff;
     background: #000;
 }
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 .user_info .row {
-    max-width: 693px;
+    max-width: 562px;
     margin: 15px auto;
 }
 img {
@@ -99,6 +106,10 @@ a {
 .for_score {
     margin-top: -60px !important
 }
+.profile_info {
+    display: flex;
+    margin-left: 137px;
+}
 .profile_info div {
     display: inline-flex;
     text-align: left;
@@ -131,6 +142,9 @@ a {
 .feature-name {
     font-weight: 500;
     font-size: 20px;
+}
+.feature-name:hover {
+    text-decoration: none;
 }
 .view_text {
     font-size: 17px;
@@ -200,6 +214,9 @@ a {
   .inner-img:hover {
     transform: scale(1.1);
   }
+  h3 a {
+      text-decoration: none !important
+  }
   
   /* Other styling elements, that are not necessary for the example */
   
@@ -256,12 +273,29 @@ a {
     .head_line .mt-5 {
         margin-top: 0px !important
     }
+    .profile_info {
+        margin-left: 0px;
+    }
+    .for_logo {
+        width: 70%;
+    }
 }
 @media (max-width: 767.98px) {
     .search-field input {
         height: 50px;
         margin-bottom: 10px;
     }
+    .user_header {
+        display: flex;
+        justify-content: center;
+    }
+    .avatar {
+        margin-bottom: 15px;
+    }
+    .for_score {
+        margin-top: 0px !important
+    }
+    
 }
 
 

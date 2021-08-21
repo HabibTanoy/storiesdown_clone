@@ -43,13 +43,11 @@
             margin-left: 20px;
             margin-right: 20px;
         }
-        button:focus {outline:0;}
     </style>
-      <section class="top">
       <div class="container">
-          <div class="row top">
+          <div class="row">
                 <div class="col-12 text-center" style="{{!isset($profile) ? 'height:80vh': ''}}">
-                      <div class="text-center head_line mt-5">
+                      <div class="text-center head_line">
                         <h3 class="font-weight-bold mb-3 mt-5">Instagram Story Viewer & Downloader</h3>
                         <p class="pb-5">Best Instagram story viewer! You can watch Instagram stories anonymously and quickly without the need to log in or having account.</p>
                       </div>
@@ -62,7 +60,6 @@
                 </div>
           </div>
         </div>
-      </div>
 
             <!--end of search bar-->
             @if(isset($profile))
@@ -77,6 +74,7 @@
                   <div class="flex jcsb aic">
                     <div class="nickname">
                       <h1>{{$profile['full_name']}}
+{{--                        <span>(Anonymous profile view)</span>--}}
                       </h1>
                     </div>
                   </div>
@@ -137,14 +135,14 @@
                 </div>
             </div>
           </div>
-        </section>
-        @endif
-        <section>
-    
+        </section>        
+    @endif
+  
+    <section>
       <div class="container">
         <div class="row py-5 text-center">
           <div class="col-12 col-md-4 mb-4">
-            <img src="{{asset('/image/no_account.png')}}" alt="">
+            <img src="{{asset('/image/no_account.png')}}" alt=""> 
             <div class="feature-name mt-3 mb-2">No Need Instagram Account</div>
             <p class="view_text">View without login or install anything. Just enter Instagram username you want to stalk.</p>
           </div>
@@ -163,7 +161,7 @@
     </section>
     <!--start slider-->
     <div class="container">
-      <div class="row demo for_atag">
+      <div class="row for_atag">
         <div class="col-md-12">
           <a href="blog-guide.html">
             <div class="inner-img text-center">
@@ -233,7 +231,7 @@
       </div>
     </div>
     <div class="my-5 text-center visit_btn">
-      <a href="{{route('show.blog')}}" class="text-uppercase visit_blog_link">visit your blog</a>
+      <a href="blog.html" class="text-uppercase visit_blog_link">visit your blog</a>
     </div>
     <script>
         const tabs = document.querySelectorAll('[data-tab-target]')

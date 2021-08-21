@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>
+                <h1 class="text-center mt-3">
                     {{$post->title}}
                 </h1>
                 <!--<p>{{\Carbon\Carbon::parse($post->created_at)->format('M d,Y')}}</p>-->

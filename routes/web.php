@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/test', function () {
+    return view('test');
+});
+
 Route::get('/error',function (\Illuminate\Http\Request $request){
     return view('errors.500',$request->all());
 });
